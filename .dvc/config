@@ -1,0 +1,4 @@
+[core]
+    remote = bank-data
+['remote "bank-data"']
+    url = ../arn:aws:s3:::demo-dvc-storage
