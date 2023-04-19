@@ -1,4 +1,4 @@
 [core]
-    remote = bank-data
-['remote "bank-data"']
-    url = ../arn:aws:s3:::demo-dvc-storage
+    remote = s3store
+['remote "s3store"']
+    url = s3://demo-dvc-storage/bank-customer-churn
