@@ -1,0 +1,38 @@
+base:
+  project: bank_customer_churn
+  random_state: 0
+
+data:
+  raw_data_dir: data/raw
+  data_file_name: Churn_Modelling.csv
+  cat_cols:
+  - Geography
+  - Gender
+  num_cols:
+  - CreditScore
+  - Age
+  - Tenure
+  - Balance
+  - NumOfProducts
+  - HasCrCard
+  - IsActiveMember
+  - EstimatedSalary
+  target_col: Exited
+
+data_split: 
+  processed_data_dir: data/processed
+  test_size: 0.2
+
+train:
+  model_dir: models
+  model_type: XGBClassifier
+  train_params:
+    learning_rate: 0.2
+    max_depth: 5
+    n_estimators: 200
+
+eval:
+  model_path: models/model.pkl
+  reports_dir: reports
+  metrics_fname: metrics.json
+  cm_fname: confusion_matrix.png
