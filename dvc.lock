@@ -1,0 +1,48 @@
+schema: '2.0'
+stages:
+  split_data:
+    cmd: python3 src/stages/split_data.py
+    deps:
+    - path: data/raw/Churn_Modelling.csv
+      md5: 7321aa9a1e24a9e139f42124f736b415
+      size: 684858
+    - path: src/stages/split_data.py
+      md5: c385050d6db4688c8c704c3214c6db89
+      size: 1933
+    params:
+      params.yaml:
+        base:
+          project: bank_customer_churn
+          random_state: 0
+        data:
+          raw_data_dir: data/raw
+          data_file_name: Churn_Modelling.csv
+          cat_cols:
+          - Geography
+          - Gender
+          num_cols:
+          - CreditScore
+          - Age
+          - Tenure
+          - Balance
+          - NumOfProducts
+          - HasCrCard
+          - IsActiveMember
+          - EstimatedSalary
+          target_col: Exited
+        data_split:
+          processed_data_dir: data/processed
+          test_size: 0.2
+    outs:
+    - path: data/processed/x_test.csv
+      md5: 2ba3777247f8d6acffc4ab3f380024cd
+      size: 89780
+    - path: data/processed/x_train.csv
+      md5: 17c6aa69d7801f401ef8864e1582b5ef
+      size: 359519
+    - path: data/processed/y_test.csv
+      md5: 9be527e40370ba22fc5035a11df0264d
+      size: 4007
+    - path: data/processed/y_train.csv
+      md5: d653339d94651a1afebbe925acf037a8
+      size: 16007
