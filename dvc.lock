@@ -46,3 +46,47 @@ stages:
     - path: data/processed/y_train.csv
       md5: d653339d94651a1afebbe925acf037a8
       size: 16007
+  train:
+    cmd: python3 src/stages/train.py
+    deps:
+    - path: data/processed/x_train.csv
+      md5: 17c6aa69d7801f401ef8864e1582b5ef
+      size: 359519
+    - path: data/processed/y_train.csv
+      md5: d653339d94651a1afebbe925acf037a8
+      size: 16007
+    - path: src/stages/train.py
+      md5: 8aa3fb5b242c904df379b24a8ae4fd23
+      size: 2533
+    params:
+      params.yaml:
+        data:
+          raw_data_dir: data/raw
+          data_file_name: Churn_Modelling.csv
+          cat_cols:
+          - Geography
+          - Gender
+          num_cols:
+          - CreditScore
+          - Age
+          - Tenure
+          - Balance
+          - NumOfProducts
+          - HasCrCard
+          - IsActiveMember
+          - EstimatedSalary
+          target_col: Exited
+        data_split:
+          processed_data_dir: data/processed
+          test_size: 0.2
+        train:
+          model_dir: models
+          model_type: XGBClassifier
+          train_params:
+            learning_rate: 0.2
+            max_depth: 5
+            n_estimators: 200
+    outs:
+    - path: models/model.pkl
+      md5: 29af4812c220c6bf0b9103c4d6b962b9
+      size: 414702

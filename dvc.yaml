@@ -13,5 +13,18 @@ stages:
     - data/processed/x_test.csv
     - data/processed/y_train.csv
     - data/processed/y_test.csv
-    
+  train: 
+    cmd: python3 src/stages/train.py
+    deps: 
+    - src/stages/train.py
+    - data/processed/x_train.csv
+    - data/processed/y_train.csv
+    params:
+    - data
+    - data_split
+    - train
+    outs:
+    - models/model.pkl
+
+
 
