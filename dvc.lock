@@ -90,3 +90,25 @@ stages:
     - path: models/model.pkl
       md5: 29af4812c220c6bf0b9103c4d6b962b9
       size: 414702
+  eval:
+    cmd: python3 src/stages/evaluate.py
+    deps:
+    - path: data/processed/x_test.csv
+      md5: 2ba3777247f8d6acffc4ab3f380024cd
+      size: 89780
+    - path: data/processed/y_test.csv
+      md5: 9be527e40370ba22fc5035a11df0264d
+      size: 4007
+    - path: models/model.pkl
+      md5: 29af4812c220c6bf0b9103c4d6b962b9
+      size: 414702
+    - path: src/stages/evaluate.py
+      md5: aac589cffd9826a87e572a75438f9921
+      size: 2296
+    outs:
+    - path: reports/confusion_matrix.png
+      md5: b76c0ee0fd0b01f8d23c4c5ec3230bba
+      size: 16486
+    - path: reports/metrics.json
+      md5: 12fc1f35ecdfeeba835cb523063d3c28
+      size: 109

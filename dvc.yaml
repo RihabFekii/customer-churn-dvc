@@ -25,6 +25,20 @@ stages:
     - train
     outs:
     - models/model.pkl
+  eval:
+    cmd: python3 src/stages/evaluate.py
+    deps:
+    - src/stages/evaluate.py
+    - models/model.pkl
+    - data/processed/x_test.csv
+    - data/processed/y_test.csv
+    metrics:
+    - reports/metrics.json:
+        cache: false 
+    plots:
+    - reports/confusion_matrix.png:
+        cache: false
+
 
 
 

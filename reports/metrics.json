@@ -1,5 +1,5 @@
 {
-    "accuracy_score": 0.8565,
-    "f1_score": 0.5697151424287856,
-    "roc_auc_score": 0.7114441097491945
+    "accuracy_score": 0.8475,
+    "f1_score": 0.5440956651718983,
+    "roc_auc_score": 0.6984773679688935
 }
