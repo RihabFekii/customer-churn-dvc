@@ -84,12 +84,12 @@ stages:
           model_type: XGBClassifier
           train_params:
             learning_rate: 0.2
-            max_depth: 5
+            max_depth: 10
             n_estimators: 200
     outs:
     - path: models/model.pkl
-      md5: 29af4812c220c6bf0b9103c4d6b962b9
-      size: 414702
+      md5: 6e0dcd5203621530487ae96b891f4d26
+      size: 1408617
   eval:
     cmd: python3 src/stages/evaluate.py
     deps:
@@ -100,15 +100,15 @@ stages:
       md5: 9be527e40370ba22fc5035a11df0264d
       size: 4007
     - path: models/model.pkl
-      md5: 29af4812c220c6bf0b9103c4d6b962b9
-      size: 414702
+      md5: 6e0dcd5203621530487ae96b891f4d26
+      size: 1408617
     - path: src/stages/evaluate.py
       md5: aac589cffd9826a87e572a75438f9921
       size: 2296
     outs:
     - path: reports/confusion_matrix.png
-      md5: b76c0ee0fd0b01f8d23c4c5ec3230bba
-      size: 16486
+      md5: 0dab49c5f1e431ce4dbc4d0e87e20a8f
+      size: 16685
     - path: reports/metrics.json
-      md5: 12fc1f35ecdfeeba835cb523063d3c28
-      size: 109
+      md5: c5246d78ee5962c45567e39c305e6c2a
+      size: 107
