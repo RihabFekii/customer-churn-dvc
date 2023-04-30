@@ -25,14 +25,13 @@ data_split:
 
 train:
   model_dir: models
-  model_type: XGBClassifier
+  model_type: RandomForstClassifier
   train_params:
-    learning_rate: 0.2
-    max_depth: 10
-    n_estimators: 200
+    n_estimators: 100
+    max_depth: 20
 
 eval:
-  model_path: models/model.pkl
+  model_path: models/model.joblib
   reports_dir: reports
   metrics_fname: metrics.json
   cm_fname: confusion_matrix.png

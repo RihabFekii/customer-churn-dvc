@@ -56,8 +56,8 @@ stages:
       md5: d653339d94651a1afebbe925acf037a8
       size: 16007
     - path: src/stages/train.py
-      md5: 8aa3fb5b242c904df379b24a8ae4fd23
-      size: 2533
+      md5: b56b99d076d1a33f301b5c46e998cb87
+      size: 2562
     params:
       params.yaml:
         data:
@@ -81,15 +81,14 @@ stages:
           test_size: 0.2
         train:
           model_dir: models
-          model_type: XGBClassifier
+          model_type: RandomForstClassifier
           train_params:
-            learning_rate: 0.2
-            max_depth: 10
-            n_estimators: 200
+            n_estimators: 100
+            max_depth: 20
     outs:
-    - path: models/model.pkl
-      md5: 6e0dcd5203621530487ae96b891f4d26
-      size: 1408617
+    - path: models/model.joblib
+      md5: 6cc45e1e8114bec1c1a631157c1af0c1
+      size: 15187464
   eval:
     cmd: python3 src/stages/evaluate.py
     deps:
@@ -99,16 +98,16 @@ stages:
     - path: data/processed/y_test.csv
       md5: 9be527e40370ba22fc5035a11df0264d
       size: 4007
-    - path: models/model.pkl
-      md5: 6e0dcd5203621530487ae96b891f4d26
-      size: 1408617
+    - path: models/model.joblib
+      md5: 6cc45e1e8114bec1c1a631157c1af0c1
+      size: 15187464
     - path: src/stages/evaluate.py
       md5: aac589cffd9826a87e572a75438f9921
       size: 2296
     outs:
     - path: reports/confusion_matrix.png
-      md5: 0dab49c5f1e431ce4dbc4d0e87e20a8f
-      size: 16685
+      md5: 2ab4fd0720991393bfa328223c82dd4f
+      size: 14349
     - path: reports/metrics.json
-      md5: c5246d78ee5962c45567e39c305e6c2a
-      size: 107
+      md5: 5f3c73cf0ddf91c887a6ec8b649e90c3
+      size: 108

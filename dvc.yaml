@@ -24,12 +24,12 @@ stages:
     - data_split
     - train
     outs:
-    - models/model.pkl
+    - models/model.joblib
   eval:
     cmd: python3 src/stages/evaluate.py
     deps:
     - src/stages/evaluate.py
-    - models/model.pkl
+    - models/model.joblib
     - data/processed/x_test.csv
     - data/processed/y_test.csv
     metrics:

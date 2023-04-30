@@ -7,11 +7,10 @@ import pandas as pd
 import yaml
 from box import ConfigBox
 from sklearn.compose import ColumnTransformer
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OrdinalEncoder, StandardScaler
-from xgboost import XGBClassifier
-
 
 logging.basicConfig(level=logging.DEBUG, format='TRAIN: %(message)s')
 
@@ -45,7 +44,7 @@ def train(cat_cols, num_cols, processed_data_dir, model_dir, **train_params):
     )
 
     # Classification model
-    clf = XGBClassifier(**train_params)
+    clf = RandomForestClassifier(**train_params)
 
     # Training pipeline 
     model = Pipeline(
@@ -61,7 +60,7 @@ def train(cat_cols, num_cols, processed_data_dir, model_dir, **train_params):
     
     # Save trained model 
     logging.info("Saving model")
-    joblib.dump(trained_model, filename=model_dir/"model.pkl")
+    joblib.dump(trained_model, filename=model_dir/"model.joblib")
 
 
 if __name__ == "__main__":
