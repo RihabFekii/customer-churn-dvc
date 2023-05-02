@@ -1,0 +1,3 @@
+churn-clf-rf:
+  path: models/model.joblib
+  type: model
